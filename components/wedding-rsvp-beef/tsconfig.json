@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "outDir": "./dist",
+    "rootDir": "./src/app",
+    "incremental": true,
+    "tsBuildInfoFile": "./.tsbuildinfo",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "baseUrl": "./",
+    "lib": [
+      "es2020"
+    ],
+    "paths": {
+      "*": [
+        "libs/*",
+      ],
+      "#test/*": [
+        "test/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "compileOnSave": false
+}

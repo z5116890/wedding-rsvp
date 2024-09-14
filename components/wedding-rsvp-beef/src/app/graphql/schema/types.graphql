@@ -1,0 +1,7 @@
+scalar JSON
+
+type User {
+  name: String!
+  language: String!
+  isGoing: Boolean
+}
