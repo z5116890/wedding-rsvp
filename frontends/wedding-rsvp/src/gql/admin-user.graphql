@@ -1,0 +1,8 @@
+query getAdminUser($username: String!) {
+  admin(username: $username) {
+    id
+    username
+    firstName
+    lastName
+  }
+}

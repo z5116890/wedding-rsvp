@@ -1,0 +1,30 @@
+query listUsers($filter: ListUsersFilter, $pagination: Pagination!) {
+  users(filter: $filter, pagination: $pagination) {
+    items {
+      id
+      type
+      firstName
+      lastName
+      code
+      rsvp
+      numPlusOnes
+      dietaryRestrictions
+      welcomeMessage
+      plusOneOf
+    }
+    pages
+    totalItems
+  }
+}
+
+mutation addUser($attrs: AddUserInput!) {
+  addUser(attrs: $attrs)
+}
+
+mutation deleteUser($id: Int!) {
+  deleteUser(id: $id)
+}
+
+mutation updateUser($id: Int!, $attrs: UpdateUserInput!) {
+  updateUser(id: $id, attrs: $attrs)
+}

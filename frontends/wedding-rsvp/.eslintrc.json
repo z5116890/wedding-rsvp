@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "../../libs/eslint-config/vue.js"
+  ],
+  
+  "plugins": [
+    "cypress"
+  ],
+  "env": {
+    "cypress/globals": true
+  },
+  "rules": {
+    "vue/no-v-model-argument": "off"
+  }
+}

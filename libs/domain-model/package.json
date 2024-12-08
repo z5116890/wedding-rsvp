@@ -1,0 +1,48 @@
+{
+  "name": "wedding-domain-model",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=18.14.2",
+    "npm": ">=9.5.0"
+  },
+  "volta": {
+    "node": "18.14.2"
+  },
+  "main": "main.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "compile": "../scripts/compile-component.sh -p tsconfig.build.json",
+    "test": "npm run compile && npm run jest",
+    "jest": "npm run jest:unit && npm run jest:int",
+    "jest:unit": "LOG_LEVEL=fatal jest --passWithNoTests '^((?!\\.int\\.spec\\.ts).)*$'",
+    "jest:int": "LOG_LEVEL=fatal jest --passWithNoTests --runInBand '.*\\.int\\.spec\\.ts'",
+    "audit": "npm audit --omit=dev"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "better-ajv-errors": "^1.2.0",
+    "err-code": "^3.0.1",
+    "express-jwt": "^7.4.2",
+    "jest": "^29.5.0",
+    "lodash": "^4.17.21",
+    "mysql2": "^3.10.0",
+    "sequelize": "^6.37.3",
+    "ts-jest": "^29.1.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.38",
+    "@types/chance": "^1.1.3",
+    "@types/convict": "^6.1.1",
+    "@types/jest": "^29.5.13",
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^18.16.5",
+    "@types/uuid": "^9.0.1",
+    "@types/validator": "^13.7.16",
+    "chance": "^1.1.11",
+    "factory-girl": "^5.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

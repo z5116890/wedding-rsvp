@@ -1,7 +1,64 @@
 scalar JSON
 
 type User {
+  id: Int!
+  type: String!
+  firstName: String!
+  lastName: String!
+  code: String!
+  rsvp: Boolean
+  numPlusOnes: Int!
+  dietaryRestrictions: String
+  welcomeMessage: String
+  plusOneOf: Int
+  stayingAt: AccommodationGuestStayDetails
+}
+
+type UserList {
+  pages: Int!
+  totalItems: Int!
+  items: [User]
+}
+
+type PlusOne {
+  id: Int!
+  userId: Int!
+  plusOneOf: Int!
+}
+
+type Accommodation {
+  id: Int!
   name: String!
-  language: String!
-  isGoing: Boolean
+  address: String!
+  numGuests: Int!
+  numRooms: Int!
+}
+
+type AccommodationGuestStayDetails {
+  name: String!
+  address: String!
+  checkInDate: String!
+  checkOutDate: String!
+}
+
+type AccommodatedGuest {
+  id: Int!
+  userId: Int!
+  firstName: String!
+  lastName: String!
+  accommodationId: Int!
+  checkInDate: String!
+  checkOutDate: String!
+}
+
+type Admin {
+  id: Int!
+  username: String!
+  firstName: String!
+  lastName: String!
+}
+
+enum GuestType {
+  guest
+  plus_one
 }

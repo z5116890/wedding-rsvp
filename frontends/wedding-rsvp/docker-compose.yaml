@@ -1,0 +1,13 @@
+# version: '3'
+
+# services:
+
+#   partner:
+#     image: 278521702583.dkr.ecr.us-west-2.amazonaws.com/arch/node-v18-chrome:v2.0.1
+#     working_dir: /app/frontends/$MODULE
+#     volumes:
+#       - $HOME/.npmrc:/root/.npmrc
+#       - $PROJECT_ROOT:/app
+#     environment:
+#       - BUILDKITE=1
+#       - CONFIG_API_URL=/beef/v1

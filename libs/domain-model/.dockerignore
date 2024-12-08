@@ -1,0 +1,16 @@
+**
+.dockerignore
+.git
+!package.json
+!package-lock.json
+!gulpfile.js
+!tsconfig.json
+!ci-scripts
+!dist
+!explore
+!gulp-tasks
+!build/*.zip
+!test
+!src/**
+!tasks
+!publish

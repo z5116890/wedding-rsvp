@@ -1,0 +1,8 @@
+query adminLogin($username: String!, $password: String!) {
+  adminLogin(username: $username, password: $password) {
+    id
+    username
+    firstName
+    lastName
+  }
+}

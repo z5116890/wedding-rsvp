@@ -1,0 +1,33 @@
+overwrite: true
+generates:
+  src/services/beef/types.ts:
+    schema: ../../components/wedding-rsvp-beef/src/app/graphql/schema/*.graphql
+    documents:
+      - src/**/*.graphql
+    plugins:
+      - add:
+          content:
+            - '/* eslint-disable */'
+            - '/* Generate this file by running `npm run graphql-codegen` */'
+      - typescript
+      - typescript-operations
+      - typed-document-node
+    config:
+      useTypeImports: true
+
+config:
+  # notice this avoidOptional setting is an exact opposite of
+  # the recommendation from (admin|customer)-beef
+  avoidOptionals:
+    # `field` should never have optional in frontend because if you have
+    # selected a field in a query, GraphQL will only return null or the value,
+    # it always includes the field in the response.
+    field: true
+    inputValue: false
+    object: false
+    defaultValue: false
+  namingConvention:
+    enumValues: keep # generated TS enum should be the same as GraphQL enum
+  scalars:
+    Date: string
+    LocalDate: string

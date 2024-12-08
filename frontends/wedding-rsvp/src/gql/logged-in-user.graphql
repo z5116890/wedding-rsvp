@@ -1,0 +1,30 @@
+query user($code: String!, $lastName: String!) {
+  user(code: $code, lastName: $lastName) {
+    id
+    type
+    firstName
+    lastName
+    code
+    rsvp
+    numPlusOnes
+    dietaryRestrictions
+    welcomeMessage
+    stayingAt {
+      name
+      address
+      checkInDate
+      checkOutDate
+    }
+  }
+  userPlusOnes(code: $code, lastName: $lastName) {
+    id
+    type
+    firstName
+    lastName
+    code
+    rsvp
+    numPlusOnes
+    dietaryRestrictions
+    welcomeMessage
+  }
+}

@@ -1,7 +1,8 @@
 import * as _ from 'lodash'
-import express from 'express'
-import expressHealthcheck from 'express-healthcheck'
+import * as express from 'express'
 import * as bodyParser from 'body-parser'
+
+const expressHealthcheck = require('express-healthcheck')
 
 interface SetupExpressOutputs {
   express: express.Express
@@ -17,7 +18,7 @@ export const setupExpress = async (
   app.set('x-powered-by', false)
   app.set('etag', false)
 
-  let healthcheck = expressHealthcheck()
+  const healthcheck = expressHealthcheck()
 
   app.use('/healthcheck', healthcheck)
 
@@ -26,7 +27,6 @@ export const setupExpress = async (
   const router = express.Router()
 
   const graphqlUrlPath = '/graphql'
-
 
   router.use(graphqlUrlPath, graphqlHandler)
 

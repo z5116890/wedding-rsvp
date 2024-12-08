@@ -1,3 +1,13 @@
 type Query {
-  getUser(name: String!): User
+  user(code: String!, lastName: String!): User!
+  users(filter: ListUsersFilter, pagination: Pagination!): UserList
+  plusOne(userId: Int!): PlusOne!
+  userPlusOnes(code: String!, lastName: String!): [User!]!
+  accommodation(id: Int!): Accommodation!
+  accommodations: [Accommodation!]!
+  accommodatedGuest(userId: Int!, accommodationId: Int!): AccommodatedGuest!
+  accommodatedGuests(accommodationId: Int!): [AccommodatedGuest!]!
+  admin(username: String!): Admin!
+  admins: [Admin!]!
+  adminLogin(username: String!, password: String!): Admin!
 }

@@ -1,0 +1,72 @@
+input AddUserInput {
+  type: String!
+  firstName: String!
+  lastName: String!
+  code: String!
+  numPlusOnes: Int!
+  dietaryRestrictions: String
+  plusOneOf: Int
+  welcomeMessage: String
+}
+
+input Pagination {
+  page: Int! @constraint(min: 1)
+  pageSize: Int! @constraint(min: 1)
+}
+
+input ListUsersFilter {
+  firstName: String
+  lastName: String
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  code: String
+  rsvp: Boolean
+  numPlusOnes: Int
+  dietaryRestrictions: String
+  welcomeMessage: String
+}
+
+input AddAccommodationInput {
+  name: String!
+  address: String!
+  numGuests: Int!
+  numRooms: Int!
+}
+
+input UpdateAccommodationInput {
+  name: String
+  address: String
+  numGuests: Int
+  numRooms: Int
+}
+
+input AddAccommodatedGuestInput {
+  userId: Int!
+  accommodationId: Int!
+  checkInDate: String!
+  checkOutDate: String!
+}
+
+input UpdateAccommodatedGuestInput {
+  userId: Int!
+  accommodationId: Int!
+  checkInDate: String
+  checkOutDate: String
+}
+
+input AddAdminInput {
+  username: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}
+
+input UpdateAdminInput {
+  username: String
+  password: String
+  firstName: String
+  lastName: String
+}

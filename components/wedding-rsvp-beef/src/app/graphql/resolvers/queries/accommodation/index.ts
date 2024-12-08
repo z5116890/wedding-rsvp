@@ -1,0 +1,1 @@
+export { accommodation } from './resolver'

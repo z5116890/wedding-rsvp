@@ -1,7 +1,7 @@
 import { Express } from 'express'
 import * as path from 'path'
 import { setupExpress } from './setup/express'
-import { setupGraphql } from './setup/graphgl'
+import { setupGraphql } from './setup/graphql'
 import { resolvers } from './graphql/resolvers'
 import { SetupMainAppOptions, SetupMainAppOutputs } from './types'
 

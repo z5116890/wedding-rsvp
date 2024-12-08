@@ -1,0 +1,23 @@
+services:
+
+  database:
+    image: mysql:8.0
+    container_name: wedding-mysql
+    volumes:
+      - ../libs/domain-model/src/database/migrations/migration-init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wedding
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+
+volumes:
+  db_data:
+
+networks:
+  mynetwork:

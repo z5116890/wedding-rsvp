@@ -1,0 +1,21 @@
+query listAccommodations {
+  accommodations {
+    id
+    name
+    address
+    numGuests
+    numRooms
+  }
+}
+
+mutation addAccommodation($attrs: AddAccommodationInput!) {
+  addAccommodation(attrs: $attrs)
+}
+
+mutation deleteAccommodation($id: Int!) {
+  deleteAccommodation(id: $id)
+}
+
+mutation updateAccommodation($id: Int!, $attrs: UpdateAccommodationInput!) {
+  updateAccommodation(id: $id, attrs: $attrs)
+}

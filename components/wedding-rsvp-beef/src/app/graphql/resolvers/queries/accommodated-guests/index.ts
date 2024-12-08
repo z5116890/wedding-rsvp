@@ -1,0 +1,1 @@
+export { accommodatedGuests } from './resolver'

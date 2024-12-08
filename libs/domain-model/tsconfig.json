@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "typeRoots": [
+      "./typings",
+      "./node_modules/@types"
+    ],
+    "incremental": true,
+    "tsBuildInfoFile": "./.tsbuildinfo",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "baseUrl": "./",
+    "lib": [
+      "es2020"
+    ],
+    "paths": {
+      "*": [
+        "libs/*",
+        "typings/*"
+      ],
+      "#test/*": [
+        "test/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": [
+    "./src/app",
+    "./test",
+    "./libs"
+  ],
+  "compileOnSave": false
+}

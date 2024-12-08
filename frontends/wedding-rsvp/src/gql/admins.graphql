@@ -1,0 +1,17 @@
+query getAdmins {
+  admins {
+    id
+    username
+    firstName
+    lastName
+  }
+}
+
+mutation addAdminUser($attrs: AddAdminInput!) {
+  addAdmin(attrs: $attrs)
+}
+
+mutation deleteAdminUser($id: Int!) {
+  deleteAdmin(id: $id)
+}
+

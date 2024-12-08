@@ -11,12 +11,17 @@ generates:
     config:
       avoidOptionals:
         field: false
-        inputValue: false
+        inputValue: true
         object: true
         defaultValue: true
-      namingConvention:
-        enumValues: keep
-      typesPrefix: Gql
-      noSchemaStitching: true
-      optionalInfoArgument: true
-      makeResolverTypeCallable: true
+        resolvers: true
+config:
+  typesPrefix: 'Gql'
+  noSchemaStitching: true
+  namingConvention:
+    enumValues: keep
+  optionalInfoArgument: true
+  makeResolverTypeCallable: true
+  scalars:
+    ID: number
+    LocalDate: LocalDate

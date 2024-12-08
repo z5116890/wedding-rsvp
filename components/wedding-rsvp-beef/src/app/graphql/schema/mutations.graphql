@@ -1,0 +1,14 @@
+type Mutation {
+  addUser(attrs: AddUserInput!): Boolean!
+  updateUser(id: Int!, attrs: UpdateUserInput!): Boolean!
+  deleteUser(id: Int!): Boolean!
+  addAccommodation(attrs: AddAccommodationInput!): Boolean!
+  updateAccommodation(id: Int!, attrs: UpdateAccommodationInput!): Boolean!
+  deleteAccommodation(id: Int!): Boolean!
+  addAccommodatedGuest(attrs: AddAccommodatedGuestInput!): Boolean!
+  updateAccommodatedGuest(attrs: UpdateAccommodatedGuestInput!): Boolean!
+  deleteAccommodatedGuest(userId: Int!, accommodationId: Int!): Boolean!
+  addAdmin(attrs: AddAdminInput!): Boolean!
+  updateAdmin(id: Int!, attrs: UpdateAdminInput!): Boolean!
+  deleteAdmin(id: Int!): Boolean!
+}
