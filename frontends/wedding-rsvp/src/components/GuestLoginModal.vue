@@ -102,7 +102,7 @@ export default defineComponent({
 </script>
 <template>
   <div>
-    <n-modal v-model:show="showModal" :close-on-esc="false" :mask-closable="false">
+    <n-modal class="guest-modal" v-model:show="showModal" :close-on-esc="false" :mask-closable="false">
       <n-card
         style="width: 600px"
         title="Please enter your last name and the wedding code you received"
@@ -137,4 +137,10 @@ export default defineComponent({
   </div>
 </template>
 <style lang="scss" scoped>
+.guest-modal {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-size: 1.5rem;
+}
 </style>

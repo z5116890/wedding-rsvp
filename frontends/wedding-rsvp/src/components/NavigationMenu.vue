@@ -8,6 +8,7 @@ import {
   PersonOutline as PersonIcon,
   WineOutline as WineIcon
 } from '@vicons/ionicons5'
+import router from '../router'
 
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
@@ -20,28 +21,23 @@ const menuOptions: MenuOption[] = [
     icon: renderIcon(BookIcon),
     children: [
       {
-        label: 'Home',
-        key: 'home',
+        label: 'Manage Admins',
+        key: 'ManageAdmins',
         icon: renderIcon(PersonIcon)
       },
       {
-        label: 'Admins',
-        key: 'admins',
+        label: 'Manage Accommodations',
+        key: 'ManageAccommodations',
         icon: renderIcon(PersonIcon)
       },
       {
-        label: 'Accommodations',
-        key: 'accommodations',
-        icon: renderIcon(PersonIcon)
-      },
-      {
-        label: 'Guests',
-        key: 'guests',
+        label: 'Manage Guests',
+        key: 'ManageGuests',
         icon: renderIcon(PersonIcon)
       },
       {
         label: 'Logout',
-        key: 'logout',
+        key: 'AdminLogout',
         icon: renderIcon(PersonIcon)
       },
     ]
@@ -61,7 +57,7 @@ export default defineComponent({
   setup() {
 
     const handleClick = (key: string) => {
-      console.log('click', key)
+      router.push({ name: key })
     }
 
     return {

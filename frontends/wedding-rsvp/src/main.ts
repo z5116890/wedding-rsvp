@@ -5,6 +5,8 @@ import 'core-js/stable'
 
 import './styles/tailwind.scss'
 
+import 'vfonts/OpenSans.css'
+
 import router from '@/router'
 import App from './App.vue'
 import { apolloClient } from './gql/apollo'

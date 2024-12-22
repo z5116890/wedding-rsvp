@@ -11,4 +11,6 @@ export interface StoreState {
   loadingAccommodatedGuests: boolean
   loggedInUser: User & { plusOnes: User[] } | null
   loadingLoggedInUser: boolean
+  loggedInAdmin: Admin | null
+  loadingLoggedInAdmin: boolean
 }

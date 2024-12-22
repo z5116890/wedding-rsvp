@@ -1,6 +1,15 @@
 import { Sequelize, Options } from 'sequelize'
-import 'dotenv/config'
+// eslint-disable-next-line import/no-extraneous-dependencies
+const dotenv = require('dotenv')
+// eslint-disable-next-line import/no-extraneous-dependencies
+const fs = require('fs')
+
 import { sequelize, setSequelize } from './sequelize'
+
+const dbUser = fs.readFileSync('/run/secrets/wedding_rsvp_db_user', 'utf-8').trim();
+const dbPassword = fs.readFileSync('/run/secrets/wedding_rsvp_db_password', 'utf-8').trim();
+
+dotenv.config()
 
 if (!sequelize) {
 
@@ -8,8 +17,8 @@ if (!sequelize) {
   const config = {
     MYSQL_HOST: process.env.MYSQL_HOST || 'localhost',
     MYSQL_PORT: Number(process.env.MYSQL_PORT) || 3306,
-    MYSQL_USER: process.env.MYSQL_USER,
-    MYSQL_PASSWORD: process.env.MYSQL_PASSWORD,
+    MYSQL_USER: dbUser,
+    MYSQL_PASSWORD: dbPassword,
     MYSQL_DATABASE: process.env.MYSQL_DATABASE,
   }
 
@@ -18,6 +27,10 @@ if (!sequelize) {
   const username = config['MYSQL_USER']
   const password = config['MYSQL_PASSWORD']
   const database = config['MYSQL_DATABASE']
+
+  console.log('username', username)
+  console.log('password', password)
+  console.log('database', database)
 
   const dbconfig: Options = {
     host: config['MYSQL_HOST'],

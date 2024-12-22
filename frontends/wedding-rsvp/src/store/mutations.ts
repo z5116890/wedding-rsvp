@@ -32,5 +32,11 @@ export const mutations = {
   },
   setLoadingLoggedInUser: (state: StoreState, loading: boolean) => {
     state.loadingLoggedInUser = loading
-  }
+  },
+  setLoggedInAdmin: (state: StoreState, loggedInAdmin: Admin | null) => {
+    state.loggedInAdmin = loggedInAdmin
+  },
+  setLoadingLoggedInAdmin: (state: StoreState, loading: boolean) => {
+    state.loadingLoggedInAdmin = loading
+  },
 }

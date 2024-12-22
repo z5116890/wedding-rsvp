@@ -534,5 +534,45 @@ export const actions = {
     })
 
   },
+  getLoggedInAdmin: ({ commit }, args: { username: string, password: string }) => {
+
+    return new Promise((resolve, reject) => {
+
+      const { onResult, onError } = useQuery(GraphQL.AdminLoginDocument, {
+        username: args.username,
+        password: args.password,
+      })
+
+      onResult(({ data, loading, errors }) => {
+
+        const { adminLogin: admin } = data || {}
+
+        console.log('admin', admin)
+
+        if (loading) {
+          commit('setLoadingLoggedInAdmin', true)
+        } else if (!loading && admin) {
+          commit('setLoggedInAdmin', admin)
+          commit('setLoadingLoggedInAdmin', false)
+          resolve(admin)
+        } else if (!loading && errors?.length) {
+          commit('setLoadingLoggedInAdmin', false)
+          reject(errors)
+        }
+
+      })
+
+      onError((error) => {
+        reject(error)
+      })
+
+    })
+
+  },
+  logoutAdmin: ({ commit }) => {
+
+    commit('setLoggedInAdmin', null)
+
+  },
 
 }

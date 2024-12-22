@@ -1,7 +1,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useLoginAdmin } from '../services/use/use-login-admin'
-import { NButton, NForm, NFormItemRow, NInput, NTabs, NTabPane } from 'naive-ui'
+import { NButton, NForm, NFormItemRow, NInput, NTabs, NTabPane, useMessage } from 'naive-ui'
+import { useStore } from 'vuex';
 import router from '../router'
 
 export default defineComponent({
@@ -20,21 +21,29 @@ export default defineComponent({
     const username = ref(null)
     const password = ref(null)
 
+    const store = useStore()
+
+    const message = useMessage()
+
+    const handleLogin = async () => {
+      try {
+        await store.dispatch('getLoggedInAdmin', {
+          username: username.value,
+          password: password.value,
+        })
+        router.push({ name: 'ManageAdmins' })
+        message.success(`Welcome ${store.state.loggedInAdmin?.firstName}`)
+      } catch (error) {
+        message.error('Invalid login')
+      }
+    }
+
     const {
       adminUser,
       loadingAdminUser,
       adminUserLoaded,
       adminLogin,
     } = useLoginAdmin()
-
-    const handleLogin = async () => {
-      if (!username.value || !password.value) {
-        return
-      }
-      await adminLogin({ username: username.value, password: password.value })
-      username.value = null
-      password.value = null
-    }
 
     return {
       username,

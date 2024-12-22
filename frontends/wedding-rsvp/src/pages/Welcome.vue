@@ -157,6 +157,11 @@ export default defineComponent({
 
     }
 
+    const smoothTransition = (id: string) => {
+      const element = document.getElementById(id)
+      element?.scrollIntoView({ behavior: 'smooth' })
+    }
+
     return {
       welcomeMessage,
       rules: rules.value,
@@ -177,6 +182,7 @@ export default defineComponent({
       dietaryRestrictionsStatus,
       dietaryRestrictionsLoading,
       saveDietaryRestrictions,
+      smoothTransition,
     }
 
   },
@@ -191,38 +197,49 @@ export default defineComponent({
       @update:show="showLoginModal = false" 
     />
     <div
-      class="w-screen h-screen flex background flex-col items-center"
+      class="w-screen h-screen flex background flex-col items-center justify-evenly"
     >
       <div class="menu-items">
-        <h2 class="mb-12 ml-5">RSVP.</h2>
-        <h2 class="mb-12 mr-5">Info.</h2>
+        <h2 class="mb-12 ml-5 menu-item">
+          <div @click="smoothTransition('rsvp')">
+            RSVP.
+          </div>
+        </h2>
+        <h2 class="mb-12 mr-5 menu-item">
+          <div @click="smoothTransition('info')">
+            INFO.
+          </div>
+        </h2>
       </div>
-      <h1 class="main-heading">Austin & Katie are getting married.</h1>
       <div class="images-container">
         <div class="image-1">
-          <p class="h5 md:text-3xl xl:text-4xl mb-0">
-          </p>
+          <img class="wedding-image" src="../../static/images/wedding-ak.svg">
         </div>
-        <div class="image-2">
-          <h3 class="text">{{ loggedInUser ? loggedInUser.welcomeMessage : '' }}</h3>
+        <!-- <div class="image-2 regular-text">
+          <p class="text">{{ loggedInUser ? loggedInUser.welcomeMessage : '' }}</p>
           <br/>
-          <h3 class="text">January 10th, 2026 at 6pm</h3>
+          <p class="text">January 10th, 2026 at 6pm</p>
           <p class="text">The Reverie Saigon, Ho Chi Minh City, Vietnam</p>
-        </div>
+        </div> -->
       </div>
+      <div class="image-2 regular-text text-center">
+          <p class="text">{{ loggedInUser ? loggedInUser.welcomeMessage : '' }}</p>
+          <p class="text">10 / 01 / 2026</p>
+          <p class="text">Reception 6pm | The Reverie Saigon, Ho Chi Minh City, Vietnam</p>
+        </div>
     </div>
     <div 
       v-if="loggedInUser"
-      class="w-screen h-screen flex background flex-col items-center"
+      class="w-screen h-screen flex background flex-col items-center center-sections"
     >
-      <h1 class="heading">RSVP</h1>
-      <div class="menu-container flex items-center flex-col">
+      <h1 id="rsvp" class="heading">RSVP</h1>
+      <div class="menu-container flex items-center flex-col regular-text">
         <div class="rsvp-padding">
           <h3>Let us know if you are coming:</h3>
-          <n-p>
+          <p>
             Kindly RSVP by Wednesday, 30th October 2024 so we may confirm numbers with the hotel and catering for all events.
 
-          </n-p>
+          </p>
           <div class="flex gap-2 pt-3">
             <n-button type="primary" :ghost="!loggedInUser.rsvp" @click="handleRsvpUpdate(true)">
               Yes
@@ -277,9 +294,9 @@ export default defineComponent({
     </div>
     <div 
       v-if="loggedInUser"
-      class="w-screen h-screen flex background flex-col items-center"
+      class="w-screen h-screen flex background flex-col items-center pb-36 center-sections"
     >
-      <h1 class="heading">Info</h1>
+      <h1 id="info" class="heading">Info</h1>
       <div class="menu-container flex items-center w-4/6 flex-col">
         <n-tabs 
           default-value="oasis" 
@@ -288,8 +305,8 @@ export default defineComponent({
           :animated="true"
           size="large"
         >
-          <n-tab-pane name="oasis" tab="Itinerary TBA">
-            <div class="info-container flex p-12 flex-col">
+          <n-tab-pane class="regular-text" name="oasis" tab="Itinerary TBA">
+            <div class="info-container flex p-12 flex-col regular-text">
               <n-h2>Saturday</n-h2>
               <n-timeline size="large">
                 <n-timeline-item
@@ -324,35 +341,35 @@ export default defineComponent({
             </div>
           </n-tab-pane>
           <n-tab-pane name="the beatles" tab="Key Information">
-            <div class="info-container">
+            <div class="info-container regular-text">
               <n-h2>Location</n-h2>
-              <n-p>
+              <p>
                 Our Wedding will be held in Ho Chi Minh City, Vietnam from Friday 8th January 2026 - Sunday 10th January 2026.
-              </n-p>
+              </p>
               <n-h2>Accommodation</n-h2>
               <div v-if="loggedInUser.stayingAt">
-                <n-p>
+                <p>
                   You will be staying at <b>{{ loggedInUser.stayingAt.name }}</b>
-                </n-p>
-                <n-p>
+                </p>
+                <p>
                   <b>Address</b>: {{ loggedInUser.stayingAt.address }}
-                </n-p>
-                <n-p>
+                </p>
+                <p>
                   <b>Check-in</b>: {{ loggedInUser.stayingAt.checkInDate }}
-                </n-p>
-                <n-p>
+                </p>
+                <p>
                   <b>Check-out</b>: {{ loggedInUser.stayingAt.checkOutDate }}
-                </n-p>
+                </p>
               </div>
-              <n-p v-else>
+              <p v-else>
                 Please book exclusive discounted accommodation for Hilton via this Reservation Link:
-              </n-p>
+              </p>
               <n-h2>Dress code</n-h2>
-              <n-p>
+              <p>
                 Formal attire
-              </n-p>
+              </p>
               <n-h2>Travelling to Vietnam</n-h2>
-              <n-p>
+              <p>
                 <ol>
                   <li>
                     Please make sure you have a valid passport with at least 6 months validity
@@ -362,11 +379,11 @@ export default defineComponent({
                   </li>
                 </ol>
 
-              </n-p>
+              </p>
               <n-h2>Also...</n-h2>
-              <n-p>
+              <p>
                 We recommend taking the following precautions to have a safe, healthy and enjoyable trip:
-              </n-p>
+              </p>
               <ol>
                 <li>
                   drink bottled water if you have a sensitive stomach
@@ -402,9 +419,22 @@ export default defineComponent({
 </template>
 <style lang="scss" scoped>
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .main-heading {
     @apply heading m-20 text-center;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .center-sections {
+    @apply justify-center;
+  }
+
+  .main-heading {
+    @apply heading m-20 text-center;
+    font-size: 2.7rem;
+    margin: 2rem;
   }
   .menu-items {
     display: none;
@@ -429,17 +459,24 @@ export default defineComponent({
   .info-container {
     @apply px-2 py-6;
   }
+  .wedding-image {
+    width: 100%;
+  }
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 751px) {
   .main-heading {
-    @apply heading mb-20 text-center;
+    @apply heading text-center;
+    font-size: 3.5rem;
   }
   .menu-items {
     @apply flex w-full justify-center justify-between;
   }
+  .menu-item:hover {
+    cursor: pointer;
+  }
   .images-container {
-    @apply w-4/6;
+    width: 80%;
   }
   .image-1 {
     @apply w-4/6;
@@ -458,29 +495,51 @@ export default defineComponent({
   .info-container {
     @apply p-12;
   }
+  .wedding-image {
+    width: 100%;
+  }
 }
-
+.menu-container{
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-size: 1.5rem;
+}
 .images-container {
-  height: 800px;
-  @apply flex items-center border-solid;
+  max-height: 610px;
+  max-width: 850px;
+  @apply flex items-center;
+  justify-content: space-around;
 }
 .heading {
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: PlayfairDisplay, serif-serif;
-  color: #264E70;
+  font-weight: 100;
+  font-family: "Rouge Script", cursive;
+  color: #a47c4e;
+  font-size: 3.5rem;
+}
+.menu-item {
+  color: #a47c4e;
 }
 .background {
   background-color: #FBF8F1;
 }
+.regular-text {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-size: 1.2rem !important;
+}
 .image-1 {
-  @apply h-5/6 border-solid;
+  @apply h-5/6;
 }
 .image-2 {
-  @apply h-3/6 border-solid;
+  height: 300px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .text {
-  color: #264E70;
+  color: #a47c4e;
 }
 </style>

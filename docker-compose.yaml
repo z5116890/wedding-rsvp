@@ -1,0 +1,60 @@
+services:
+
+  database:
+    image: mysql:8.0
+    container_name: wedding-mysql
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/wedding_rsvp_db_root_password
+      MYSQL_DATABASE: wedding
+      MYSQL_USER_FILE: /run/secrets/wedding_rsvp_db_user
+      MYSQL_PASSWORD_FILE: /run/secrets/wedding_rsvp_db_password
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+    secrets:
+      - wedding_rsvp_db_root_password
+      - wedding_rsvp_db_password
+      - wedding_rsvp_db_user
+
+    # Express app service
+  wedding-rsvp-beef:
+    # use with `docker stack deploy -c docker-compose.yaml wedding`. Need to build first with `docker-compose build`. Uncomment the build section to build the image
+    image: wedding-rsvp-wedding-rsvp-beef:latest
+    # build:
+    #   context: ./components/wedding-rsvp-beef
+    environment:
+      MYSQL_DATABASE: wedding
+      MYSQL_USER_FILE: /run/secrets/wedding_rsvp_db_user
+      MYSQL_PASSWORD_FILE: /run/secrets/wedding_rsvp_db_password
+      MYSQL_HOST: database
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./components/wedding-rsvp-beef:/app  # Mount the backend code into the container
+    secrets:
+      - wedding_rsvp_db_user  # Referencing the secret for the DB password
+      - wedding_rsvp_db_password  # Referencing the secret for the DB password
+    depends_on:
+      - database  # Make sure the database is up before starting the app
+    networks:
+      - mynetwork
+
+
+volumes:
+  db_data:
+
+networks:
+  mynetwork:
+    driver: overlay
+
+secrets:
+  wedding_rsvp_db_root_password:
+    external: true
+  wedding_rsvp_db_password:
+    external: true
+  wedding_rsvp_db_user:
+    external: true

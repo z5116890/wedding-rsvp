@@ -9,11 +9,12 @@ describe(suiteName(__filename), () => {
     const newUser = {
       id: '1',
       code: '1234',
+      lastName: 'Doe',
     }
 
     const spy = jest.spyOn(User, 'findOne').mockResolvedValue(user as any)
 
-    await expect(user({} as any, { code: newUser.code }, null, {} as any)).resolves.toEqual(user)
+    await expect(user({} as any, { code: newUser.code, lastName: newUser.lastName }, null, {} as any)).resolves.toEqual(user)
 
     expect(spy).toHaveBeenCalledWith({ where: { code: newUser.code } })
 

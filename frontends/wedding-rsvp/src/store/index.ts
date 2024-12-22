@@ -16,6 +16,8 @@ const state: StoreState = {
   loadingAccommodatedGuests: false,
   loadingLoggedInUser: false,
   loggedInUser: null,
+  loggedInAdmin: null,
+  loadingLoggedInAdmin: false,
 }
 
 export const store = createStore({
