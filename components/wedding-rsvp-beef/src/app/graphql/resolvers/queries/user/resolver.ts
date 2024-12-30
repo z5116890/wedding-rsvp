@@ -30,7 +30,8 @@ export const user: GqlResolvers['Query']['user'] = async (obj, { code, lastName 
   return {
     id: existingUser.id!,
     code: existingUser.code,
-    rsvp: existingUser.rsvp,
+    rsvpReception: existingUser.rsvpReception,
+    rsvpTeaCeremony: existingUser.rsvpTeaCeremony,
     type: existingUser.type!,
     firstName: existingUser.firstName!,
     lastName: existingUser.lastName!,

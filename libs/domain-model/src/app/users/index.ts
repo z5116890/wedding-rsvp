@@ -12,7 +12,8 @@ export class User extends Sequelize.Model {
   firstName!: string | null
   lastName!: string | null
   code!: string
-  rsvp!: boolean | null
+  rsvpReception!: boolean | null
+  rsvpTeaCeremony!: boolean | null
   numPlusOnes!: number
   dietaryRestrictions!: string | null
   welcomeMessage!: string | null
@@ -47,8 +48,13 @@ User.init(
       type: Sequelize.STRING,
       allowNull: false,
     },
-    rsvp: {
-      field: 'rsvp',
+    rsvpReception: {
+      field: 'rsvp_reception',
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    rsvpTeaCeremony: {
+      field: 'rsvp_tea_ceremony',
       type: Sequelize.BOOLEAN,
       allowNull: true,
     },

@@ -1,7 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import HomePage from '../pages/HomePage.vue'
 import AdminLogin from '../pages/AdminLogin.vue'
-import AdminHome from '@/pages/AdminHome.vue'
 import UnknownErrorPage from '../pages/Error/UnknownErrorPage.vue'
 import ManageAdmins from '../pages/ManageAdmins.vue'
 import ManageGuests from '../pages/ManageGuests.vue'
@@ -15,27 +13,18 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'HomePage',
-      component: HomePage,
-      // beforeEnter: multiguard([requireLogin, routePreload]),
-    },
-    {
-      path: '/welcome',
       name: 'Welcome',
       component: Welcome,
-      // beforeEnter: multiguard([requireLogin, routePreload]),
     },
     {
       path: '/error',
       name: 'UnknownErrorPage',
       component: UnknownErrorPage,
-      // beforeEnter: routePreload,
     },
     {
       path: '/admin/login',
       name: 'AdminLogin',
       component: AdminLogin,
-      // beforeEnter: multiguard([requireAdminLogin, routePreload]),
     },
     {
       path: '/admin/manage-admins',
@@ -62,7 +51,5 @@ const router = createRouter({
     },
   ],
 })
-
-// router.afterEach(setPageMeta)
 
 export default router

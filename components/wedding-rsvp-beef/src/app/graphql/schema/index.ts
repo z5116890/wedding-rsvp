@@ -280,7 +280,8 @@ export type GqlUpdateUserInput = {
   firstName: InputMaybe<Scalars['String']['input']>;
   lastName: InputMaybe<Scalars['String']['input']>;
   numPlusOnes: InputMaybe<Scalars['Int']['input']>;
-  rsvp: InputMaybe<Scalars['Boolean']['input']>;
+  rsvpReception: InputMaybe<Scalars['Boolean']['input']>;
+  rsvpTeaCeremony: InputMaybe<Scalars['Boolean']['input']>;
   welcomeMessage: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -293,7 +294,8 @@ export type GqlUser = {
   lastName: Scalars['String']['output'];
   numPlusOnes: Scalars['Int']['output'];
   plusOneOf?: Maybe<Scalars['Int']['output']>;
-  rsvp?: Maybe<Scalars['Boolean']['output']>;
+  rsvpReception?: Maybe<Scalars['Boolean']['output']>;
+  rsvpTeaCeremony?: Maybe<Scalars['Boolean']['output']>;
   stayingAt?: Maybe<GqlAccommodationGuestStayDetails>;
   type: Scalars['String']['output'];
   welcomeMessage?: Maybe<Scalars['String']['output']>;
@@ -467,18 +469,18 @@ export interface GqlJsonScalarConfig extends GraphQLScalarTypeConfig<GqlResolver
 }
 
 export type GqlMutationResolvers<ContextType = any, ParentType extends GqlResolversParentTypes['Mutation'] = GqlResolversParentTypes['Mutation']> = {
-  addAccommodatedGuest: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddAccommodatedGuestArgs, 'attrs'>>;
-  addAccommodation: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddAccommodationArgs, 'attrs'>>;
-  addAdmin: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddAdminArgs, 'attrs'>>;
-  addUser: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddUserArgs, 'attrs'>>;
-  deleteAccommodatedGuest: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteAccommodatedGuestArgs, 'accommodationId' | 'userId'>>;
-  deleteAccommodation: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteAccommodationArgs, 'id'>>;
-  deleteAdmin: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteAdminArgs, 'id'>>;
-  deleteUser: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteUserArgs, 'id'>>;
-  updateAccommodatedGuest: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateAccommodatedGuestArgs, 'attrs'>>;
-  updateAccommodation: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateAccommodationArgs, 'attrs' | 'id'>>;
-  updateAdmin: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateAdminArgs, 'attrs' | 'id'>>;
-  updateUser: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateUserArgs, 'attrs' | 'id'>>;
+  addAccommodatedGuest?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddAccommodatedGuestArgs, 'attrs'>>;
+  addAccommodation?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddAccommodationArgs, 'attrs'>>;
+  addAdmin?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddAdminArgs, 'attrs'>>;
+  addUser?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationAddUserArgs, 'attrs'>>;
+  deleteAccommodatedGuest?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteAccommodatedGuestArgs, 'accommodationId' | 'userId'>>;
+  deleteAccommodation?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteAccommodationArgs, 'id'>>;
+  deleteAdmin?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteAdminArgs, 'id'>>;
+  deleteUser?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationDeleteUserArgs, 'id'>>;
+  updateAccommodatedGuest?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateAccommodatedGuestArgs, 'attrs'>>;
+  updateAccommodation?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateAccommodationArgs, 'attrs' | 'id'>>;
+  updateAdmin?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateAdminArgs, 'attrs' | 'id'>>;
+  updateUser?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType, RequireFields<GqlMutationUpdateUserArgs, 'attrs' | 'id'>>;
 };
 
 export type GqlPlusOneResolvers<ContextType = any, ParentType extends GqlResolversParentTypes['PlusOne'] = GqlResolversParentTypes['PlusOne']> = {
@@ -489,17 +491,17 @@ export type GqlPlusOneResolvers<ContextType = any, ParentType extends GqlResolve
 };
 
 export type GqlQueryResolvers<ContextType = any, ParentType extends GqlResolversParentTypes['Query'] = GqlResolversParentTypes['Query']> = {
-  accommodatedGuest: Resolver<GqlResolversTypes['AccommodatedGuest'], ParentType, ContextType, RequireFields<GqlQueryAccommodatedGuestArgs, 'accommodationId' | 'userId'>>;
-  accommodatedGuests: Resolver<Array<GqlResolversTypes['AccommodatedGuest']>, ParentType, ContextType, RequireFields<GqlQueryAccommodatedGuestsArgs, 'accommodationId'>>;
-  accommodation: Resolver<GqlResolversTypes['Accommodation'], ParentType, ContextType, RequireFields<GqlQueryAccommodationArgs, 'id'>>;
-  accommodations: Resolver<Array<GqlResolversTypes['Accommodation']>, ParentType, ContextType>;
-  admin: Resolver<GqlResolversTypes['Admin'], ParentType, ContextType, RequireFields<GqlQueryAdminArgs, 'username'>>;
-  adminLogin: Resolver<GqlResolversTypes['Admin'], ParentType, ContextType, RequireFields<GqlQueryAdminLoginArgs, 'password' | 'username'>>;
-  admins: Resolver<Array<GqlResolversTypes['Admin']>, ParentType, ContextType>;
-  plusOne: Resolver<GqlResolversTypes['PlusOne'], ParentType, ContextType, RequireFields<GqlQueryPlusOneArgs, 'userId'>>;
-  user: Resolver<GqlResolversTypes['User'], ParentType, ContextType, RequireFields<GqlQueryUserArgs, 'code' | 'lastName'>>;
-  userPlusOnes: Resolver<Array<GqlResolversTypes['User']>, ParentType, ContextType, RequireFields<GqlQueryUserPlusOnesArgs, 'code' | 'lastName'>>;
-  users: Resolver<Maybe<GqlResolversTypes['UserList']>, ParentType, ContextType, RequireFields<GqlQueryUsersArgs, 'pagination'>>;
+  accommodatedGuest?: Resolver<GqlResolversTypes['AccommodatedGuest'], ParentType, ContextType, RequireFields<GqlQueryAccommodatedGuestArgs, 'accommodationId' | 'userId'>>;
+  accommodatedGuests?: Resolver<Array<GqlResolversTypes['AccommodatedGuest']>, ParentType, ContextType, RequireFields<GqlQueryAccommodatedGuestsArgs, 'accommodationId'>>;
+  accommodation?: Resolver<GqlResolversTypes['Accommodation'], ParentType, ContextType, RequireFields<GqlQueryAccommodationArgs, 'id'>>;
+  accommodations?: Resolver<Array<GqlResolversTypes['Accommodation']>, ParentType, ContextType>;
+  admin?: Resolver<GqlResolversTypes['Admin'], ParentType, ContextType, RequireFields<GqlQueryAdminArgs, 'username'>>;
+  adminLogin?: Resolver<GqlResolversTypes['Admin'], ParentType, ContextType, RequireFields<GqlQueryAdminLoginArgs, 'password' | 'username'>>;
+  admins?: Resolver<Array<GqlResolversTypes['Admin']>, ParentType, ContextType>;
+  plusOne?: Resolver<GqlResolversTypes['PlusOne'], ParentType, ContextType, RequireFields<GqlQueryPlusOneArgs, 'userId'>>;
+  user?: Resolver<GqlResolversTypes['User'], ParentType, ContextType, RequireFields<GqlQueryUserArgs, 'code' | 'lastName'>>;
+  userPlusOnes?: Resolver<Array<GqlResolversTypes['User']>, ParentType, ContextType, RequireFields<GqlQueryUserPlusOnesArgs, 'code' | 'lastName'>>;
+  users?: Resolver<Maybe<GqlResolversTypes['UserList']>, ParentType, ContextType, RequireFields<GqlQueryUsersArgs, 'pagination'>>;
 };
 
 export type GqlUserResolvers<ContextType = any, ParentType extends GqlResolversParentTypes['User'] = GqlResolversParentTypes['User']> = {
@@ -510,7 +512,8 @@ export type GqlUserResolvers<ContextType = any, ParentType extends GqlResolversP
   lastName: Resolver<GqlResolversTypes['String'], ParentType, ContextType>;
   numPlusOnes: Resolver<GqlResolversTypes['Int'], ParentType, ContextType>;
   plusOneOf: Resolver<Maybe<GqlResolversTypes['Int']>, ParentType, ContextType>;
-  rsvp: Resolver<Maybe<GqlResolversTypes['Boolean']>, ParentType, ContextType>;
+  rsvpReception: Resolver<Maybe<GqlResolversTypes['Boolean']>, ParentType, ContextType>;
+  rsvpTeaCeremony: Resolver<Maybe<GqlResolversTypes['Boolean']>, ParentType, ContextType>;
   stayingAt: Resolver<Maybe<GqlResolversTypes['AccommodationGuestStayDetails']>, ParentType, ContextType>;
   type: Resolver<GqlResolversTypes['String'], ParentType, ContextType>;
   welcomeMessage: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;

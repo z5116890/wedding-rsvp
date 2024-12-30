@@ -7,7 +7,8 @@ export default (factory: FactoryGirl) => {
     firstName: factory.chance('first'),
     lastName: factory.chance('last'),
     code: factory.chance('string', { length: 4 }),
-    rsvp: factory.chance('bool'),
+    rsvpReception: factory.chance('bool'),
+    rsvpTeaCeremony: factory.chance('bool'),
     numPlusOnes: factory.chance('integer', { min: 0, max: 10 }),
     dietaryRestrictions: factory.chance('pickone', ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'kosher', 'halal', 'other']),
   })

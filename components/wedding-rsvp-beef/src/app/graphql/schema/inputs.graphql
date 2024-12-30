@@ -23,7 +23,8 @@ input UpdateUserInput {
   firstName: String
   lastName: String
   code: String
-  rsvp: Boolean
+  rsvpReception: Boolean
+  rsvpTeaCeremony: Boolean
   numPlusOnes: Int
   dietaryRestrictions: String
   welcomeMessage: String

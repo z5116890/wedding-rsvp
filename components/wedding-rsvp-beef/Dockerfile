@@ -5,14 +5,10 @@ WORKDIR /app
 
 # RUN ls -la /build
 
-COPY ["build/*.zip", "/app"]
+COPY ["build/stage/", "/app"]
 
-RUN echo "Contents of /app after COPY:" && ls -la /app
-
-RUN ls -la /app
-
-RUN unzip -qo wedding-rsvp-beef-*.zip
+# RUN unzip -qo wedding-rsvp-beef-*.zip
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "ls -la / && ls -la /app && node /app/dist/src/app/main.js"]
+CMD ["sh", "-c", "ls -la /app && node /app/src/app/main.js"]

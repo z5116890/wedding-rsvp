@@ -6,7 +6,8 @@ query listUsers($filter: ListUsersFilter, $pagination: Pagination!) {
       firstName
       lastName
       code
-      rsvp
+      rsvpReception
+      rsvpTeaCeremony
       numPlusOnes
       dietaryRestrictions
       welcomeMessage

@@ -35,12 +35,25 @@ function createColumns({
       key: 'code'
     },
     {
-      title: 'RSVP',
-      key: 'rsvp',
+      title: 'RSVP for Reception',
+      key: 'rsvpReception',
       render(row) {
-        if (row.rsvp === true) {
+        if (row.rsvpReception === true) {
           return 'Yes'
-        } else if (row.rsvp === false) {
+        } else if (row.rsvpReception === false) {
+          return 'No'
+        } else {
+          return 'Maybe'
+        }
+      }
+    },
+    {
+      title: 'RSVP for Tea Ceremony',
+      key: 'rsvpTeaCeremony',
+      render(row) {
+        if (row.rsvpTeaCeremony === true) {
+          return 'Yes'
+        } else if (row.rsvpTeaCeremony === false) {
           return 'No'
         } else {
           return 'Maybe'
@@ -182,7 +195,8 @@ export default defineComponent({
       attrs: {
         firstName: string
         lastName: string
-        rsvp: boolean
+        rsvpReception: boolean
+        rsvpTeaCeremony: boolean
         code: string
         numPlusOnes: number
         dietaryRestrictions: string

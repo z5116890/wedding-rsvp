@@ -32,7 +32,8 @@ export const userPlusOnes: GqlResolvers['Query']['userPlusOnes'] = async (obj, {
   return userPlusOnesRecords.map(user => ({
     id: user.id!,
     code: user.code,
-    rsvp: user.rsvp,
+    rsvpReception: user.rsvpReception,
+    rsvpTeaCeremony: user.rsvpTeaCeremony,
     type: user.type!,
     firstName: user.firstName!,
     lastName: user.lastName!,

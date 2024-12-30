@@ -55,7 +55,8 @@ export default defineComponent({
       firstName: props.userToUpdate.firstName,
       lastName: props.userToUpdate.lastName,
       code: props.userToUpdate.code,
-      rsvp: props.userToUpdate.rsvp,
+      rsvpReception: props.userToUpdate.rsvpReception,
+      rsvpTeaCeremony: props.userToUpdate.rsvpTeaCeremony,
       numPlusOnes: props.userToUpdate.numPlusOnes,
       dietaryRestrictions: props.userToUpdate.dietaryRestrictions,
       welcomeMessage: props.userToUpdate.welcomeMessage,
@@ -67,7 +68,8 @@ export default defineComponent({
           firstName: props.userToUpdate.firstName,
           lastName: props.userToUpdate.lastName,
           code: props.userToUpdate.code,
-          rsvp: props.userToUpdate.rsvp,
+          rsvpReception: props.userToUpdate.rsvpReception,
+          rsvpTeaCeremony: props.userToUpdate.rsvpTeaCeremony,
           numPlusOnes: props.userToUpdate.numPlusOnes,
           dietaryRestrictions: props.userToUpdate.dietaryRestrictions,
           welcomeMessage: props.userToUpdate.welcomeMessage,
@@ -150,7 +152,8 @@ export default defineComponent({
           await props.updateGuestUser(props.userToUpdate.id, {
             firstName: modelRef.value.firstName,
             lastName: modelRef.value.lastName,
-            rsvp: modelRef.value.rsvp,
+            rsvpReception: modelRef.value.rsvpReception,
+            rsvpTeaCeremony: modelRef.value.rsvpTeaCeremony,
             code: modelRef.value.code,
             numPlusOnes: Number(modelRef.value.numPlusOnes),
             dietaryRestrictions: modelRef.value.dietaryRestrictions,
@@ -194,8 +197,11 @@ export default defineComponent({
           <n-form-item path="dietaryRestrictions" label="Dietary Restrictions:">
             <n-input v-model:value="model.dietaryRestrictions" @keydown.enter.prevent />
           </n-form-item>
-          <n-form-item path="rsvp" label="RSVP:">
-            <n-select v-model:value="model.rsvp" :options="rsvpOptions" />
+          <n-form-item path="rsvpReception" label="RSVP for Reception:">
+            <n-select v-model:value="model.rsvpReception" :options="rsvpOptions" />
+          </n-form-item>
+          <n-form-item path="rsvpTeaCeremony" label="RSVP for Tea Ceremony:">
+            <n-select v-model:value="model.rsvpTeaCeremony" :options="rsvpOptions" />
           </n-form-item>
           <n-form-item v-if="userToUpdate.type === 'guest'" path="welcomeMessage" label="Welcome Message:">
             <n-input v-model:value="model.welcomeMessage" @keydown.enter.prevent />

@@ -123,7 +123,7 @@ export default defineComponent({
               <div style="display: flex; justify-content: flex-end">
                 <n-button
                   round
-                  type="primary"
+                  type="info"
                   @click="handleValidateButtonClick"
                 >
                   Next
@@ -138,9 +138,8 @@ export default defineComponent({
 </template>
 <style lang="scss" scoped>
 .guest-modal {
-  font-family: "EB Garamond", serif;
+  font-family: "Figtree", serif;
   font-optical-sizing: auto;
-  font-style: italic;
   font-size: 1.5rem;
 }
 </style>

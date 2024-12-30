@@ -35,7 +35,7 @@ export const addUser: GqlResolvers['Mutation']['addUser'] = async (obj, { attrs 
       numPlusOnes: attrs.numPlusOnes,
       dietaryRestrictions: attrs.dietaryRestrictions,
       welcomeMessage: attrs.welcomeMessage,
-      rsvp: attrs.type === GqlGuestType.plus_one ? true : null,
+      rsvp_reception: attrs.type === GqlGuestType.plus_one ? true : null,
     }, { transaction })
 
     if (attrs.type === GqlGuestType.plus_one && attrs.plusOneOf) {

@@ -1,5 +1,4 @@
 services:
-
   database:
     image: mysql:8.0
     container_name: wedding-mysql
@@ -20,10 +19,11 @@ services:
       - wedding_rsvp_db_password
       - wedding_rsvp_db_user
 
-    # Express app service
   wedding-rsvp-beef:
-    # use with `docker stack deploy -c docker-compose.yaml wedding`. Need to build first with `docker-compose build`. Uncomment the build section to build the image
-    image: wedding-rsvp-wedding-rsvp-beef:latest
+    # Use with `docker stack deploy -c docker-compose.yaml wedding`.
+    # Build first with `docker-compose build`. Uncomment the build section to build the image.
+    #image: z5116890/wedding-rsvp-wedding-rsvp-beef:latest
+    image: z5116890/wedding-rsvp-beef-local:latest
     # build:
     #   context: ./components/wedding-rsvp-beef
     environment:
@@ -33,16 +33,26 @@ services:
       MYSQL_HOST: database
     ports:
       - "3000:3000"
-    volumes:
-      - ./components/wedding-rsvp-beef:/app  # Mount the backend code into the container
     secrets:
-      - wedding_rsvp_db_user  # Referencing the secret for the DB password
-      - wedding_rsvp_db_password  # Referencing the secret for the DB password
+      - wedding_rsvp_db_user
+      - wedding_rsvp_db_password
     depends_on:
-      - database  # Make sure the database is up before starting the app
+      - database
     networks:
       - mynetwork
+  # wedding-rsvp:
+  #   image: nginx:latest
+  #   container_name: wedding-rsvp
+  #   volumes:
+  #     - ./frontend:/usr/share/nginx/html  # Point to the build folder
+  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Custom Nginx config
 
+  #   ports:
+  #     - "80:80"
+  #   networks:
+  #     - mynetwork
+  #   depends_on:
+  #     - wedding-rsvp-beef
 
 volumes:
   db_data:

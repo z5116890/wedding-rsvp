@@ -1,8 +1,6 @@
 build beef image
-1. docker-compose build (must be in location of docker-compose.yaml + make sure docker-compose.yaml has build section)
-2. docker login
-3. docker tag wedding-rsvp-wedding-rsvp-beef:latest z5116890/wedding-rsvp-wedding-rsvp-beef:latest
-4. docker push z5116890/wedding-rsvp-wedding-rsvp-beef:latest
+1. docker build -t z5116890/wedding-rsvp-beef:latest ./ (must be in location of beef)
+4. docker push z5116890/wedding-rsvp-beef:latest
 
 using docker swarm (for secrets). Assuming secrets are already created
 

@@ -5,7 +5,8 @@ query user($code: String!, $lastName: String!) {
     firstName
     lastName
     code
-    rsvp
+    rsvpReception
+    rsvpTeaCeremony
     numPlusOnes
     dietaryRestrictions
     welcomeMessage
@@ -22,7 +23,8 @@ query user($code: String!, $lastName: String!) {
     firstName
     lastName
     code
-    rsvp
+    rsvpReception
+    rsvpTeaCeremony
     numPlusOnes
     dietaryRestrictions
     welcomeMessage
